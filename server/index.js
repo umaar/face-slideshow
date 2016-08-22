@@ -1,5 +1,6 @@
 import http from 'http';
 import express from 'express';
+import faceDetection from './faceDetection';
 
 const cwd = process.cwd();
 const imageFolderURL = '/Users/umarhansa/Downloads/face-detect-images-sample';
@@ -11,11 +12,9 @@ app.use(express.static(cwd + '/client'));
 app.use('/images', express.static(imageFolderURL));
 
 
-app.get('/getImageData.json', (req, res, next) => {
-	res.json({
-		total: 1,
-		data: 2
-	})
+app.get('/getImageData.json', async function (req, res, next) {
+	const imageData = await faceDetection(imageFolderURL + '/tmp');
+	res.json(imageData)
 })
 
 
