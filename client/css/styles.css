@@ -5,7 +5,6 @@
 
 .slideshow {
 	outline: 2px solid pink;
-	transform: translateX(370px) translateY(200px);
 }
 
 .slideshow img {
